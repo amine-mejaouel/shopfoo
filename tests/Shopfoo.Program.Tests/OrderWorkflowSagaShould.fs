@@ -38,35 +38,35 @@ type OrderWorkflowSagaShould() =
         override _.Dispose() = serviceProvider.Dispose()
 
     member private _.PrepareInstructions() =
-        fun (preparer: IInstructionPreparer<'ins>) ->
+        fun (prepare: IInstructionPreparer<'ins>) ->
             { new IOrderInstructions with
                 member _.CreateOrder =
-                    preparer // ↩
-                        .Command(orderRepository.CreateOrder, "CreateOrder")
+                    prepare // ↩
+                        .Command(orderRepository.CreateOrder)
                         .Reversible(fun cmd _ -> orderRepository.DeleteOrder cmd.OrderId)
 
                 member _.IssueInvoice =
-                    preparer
-                        .Command(invoiceRepository.IssueInvoice, "IssueInvoice")
+                    prepare
+                        .Command(invoiceRepository.IssueInvoice)
                         .Compensatable(fun _ invoiceId -> invoiceRepository.CompensateInvoice { InvoiceId = invoiceId })
 
                 member _.ProcessPayment =
-                    preparer
-                        .Command(paymentRepository.ProcessPayment, "ProcessPayment")
+                    prepare
+                        .Command(paymentRepository.ProcessPayment)
                         .Compensatable(fun _ paymentId -> paymentRepository.RefundPayment { PaymentId = paymentId })
 
                 member _.SendNotification =
-                    preparer
+                    prepare
                         .Command(notificationClient.SendNotification, getName = (fun cmd -> $"SendNotificationOrder%s{cmd.NewStatus.Name}"))
                         .NotUndoable()
 
                 member _.ShipOrder =
-                    preparer // ↩
-                        .Command(warehouseClient.ShipOrder, "ShipOrder")
+                    prepare // ↩
+                        .Command(warehouseClient.ShipOrder)
                         .NotUndoable()
 
                 member _.TransitionOrder =
-                    preparer
+                    prepare
                         .Command(orderRepository.TransitionOrder, fun (FromTo(from, to')) -> $"TransitionOrderFrom%s{from}To%s{to'}")
                         .Reversible(fun cmd _ -> orderRepository.TransitionOrder(cmd.Revert()))
             }

@@ -1,5 +1,6 @@
 ﻿module Shopfoo.Program.Runner
 
+open System.Runtime.CompilerServices
 open Microsoft.Extensions.Logging
 open Shopfoo.Domain.Types.Errors
 
@@ -36,8 +37,8 @@ type IInstructionPreparer<'ins when Instructions<'ins>> =
     abstract member Command: work: Work<'arg, Res<'ret>> * getName: ('arg -> string) -> IWorkCommandBuilder<'arg, 'ret>
 
 type IInstructionPreparer<'ins when Instructions<'ins>> with
-    member this.Query(work: Work<'arg, 'ret option>, name) = this.Query(work, fun _ -> name)
-    member this.Command(work: Work<'arg, Res<'ret>>, name) = this.Command(work, fun _ -> name)
+    member this.Query(work: Work<'arg, 'ret option>, [<CallerMemberName>] ?name) = this.Query(work, fun _ -> defaultArg name "")
+    member this.Command(work: Work<'arg, Res<'ret>>, [<CallerMemberName>] ?name) = this.Command(work, fun _ -> defaultArg name "")
 
 [<Interface>]
 type IWorkflowRunner<'ins when Instructions<'ins>> =

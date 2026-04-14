@@ -151,8 +151,8 @@ module ProgramBuilderExtensions =
             x.Bind(progR = (progV |> Program.map liftValidation), f = f)
 
 /// Static class to help defining a program for a single instruction.
-/// Then, for every instruction in the "algrebra" (interface that inherits <c>IProgramInstructions</c>), we can define a function
-/// using <c>DefineProgram.instruction</c> and use this function in the workflow written with the <c>program</c> computation expression.
+/// Then, for every instruction in the "algebra" (interface that inherits `IProgramInstructions`), we can define a function
+/// using `DefineProgram.instruction` and use this function in the workflow written with the `program` computation expression.
 type DefineProgram<'ins when Instructions<'ins>> =
     /// <summary>
     /// This function is an identity function (like <c>id</c>) used for DevExp purposes to help defining a program from an instruction

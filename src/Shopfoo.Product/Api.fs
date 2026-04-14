@@ -51,15 +51,15 @@ type internal Api
         salesPipeline: SalesPipeline,
         warehousePipeline: WarehousePipeline
     ) =
-    let prepareInstructions (preparer: IInstructionPreparer<'ins>) =
+    let prepareInstructions (prepare: IInstructionPreparer<'ins>) =
         { new IProductInstructions with
-            member _.GetPrices = preparer.Query(pricesPipeline.GetPrices, "GetPrices")
-            member _.GetSales = preparer.Query(salesPipeline.GetSales, "GetSales")
-            member _.GetStockEvents = preparer.Query(warehousePipeline.GetStockEvents, "GetStockEvents")
+            member _.GetPrices = prepare.Query(pricesPipeline.GetPrices)
+            member _.GetSales = prepare.Query(salesPipeline.GetSales)
+            member _.GetStockEvents = prepare.Query(warehousePipeline.GetStockEvents)
 
             member _.SavePrices =
-                preparer
-                    .Command(pricesPipeline.SavePrices, "SavePrices")
+                prepare
+                    .Command(pricesPipeline.SavePrices)
                     .Reversible(fun _ (PreviousValue initialPrices) ->
                         async {
                             let! res = pricesPipeline.SavePrices initialPrices
@@ -68,8 +68,8 @@ type internal Api
                     )
 
             member _.SaveProduct =
-                preparer
-                    .Command(catalogPipeline.SaveProduct, "SaveProduct")
+                prepare
+                    .Command(catalogPipeline.SaveProduct)
                     .Reversible(fun _ (PreviousValue initialProduct) ->
                         async {
                             let! res = catalogPipeline.SaveProduct initialProduct
@@ -78,17 +78,17 @@ type internal Api
                     )
 
             member _.AddPrices =
-                preparer // ↩
+                prepare // ↩
                     .Command(pricesPipeline.AddPrices, "AddPrices")
                     .Reversible(fun prices _ -> pricesPipeline.DeletePrices prices.SKU)
 
             member _.AddProduct =
-                preparer // ↩
+                prepare // ↩
                     .Command(catalogPipeline.AddProduct, "AddProduct")
                     .Reversible(fun product _ -> catalogPipeline.DeleteProduct product.SKU)
 
             member _.AddStockEvent =
-                preparer // ↩
+                prepare // ↩
                     .Command(warehousePipeline.AddStockEvent, "AddStockEvent")
                     .NotUndoable()
         }
