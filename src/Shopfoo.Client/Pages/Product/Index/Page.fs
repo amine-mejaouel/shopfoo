@@ -182,11 +182,7 @@ let ProductIndexView env (filters: Filters) =
                     Router.navigatePage props.Page
                 )
                 prop.children [
-                    Html.figure [
-                        prop.key $"%s{key}-figure"
-                        prop.className "text-8xl text-center p-8"
-                        prop.children [ icon props.Icon ]
-                    ]
+                    Html.figure [ prop.key $"%s{key}-figure"; prop.className "text-8xl text-center p-8"; prop.children [ icon props.Icon ] ]
                     Daisy.cardBody [
                         prop.key $"%s{key}-body"
                         prop.className "items-center text-center"

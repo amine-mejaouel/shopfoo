@@ -70,11 +70,7 @@ type private ThemeMenu(currentTheme, onClick) =
                     )
                     prop.children [
                         Html.span [ prop.key $"{key}-theme-emoji"; prop.text emoji ]
-                        Html.span [
-                            prop.key $"{key}-theme-name"
-                            prop.className "flex-1 mx-1"
-                            prop.text text
-                        ]
+                        Html.span [ prop.key $"{key}-theme-name"; prop.className "flex-1 mx-1"; prop.text text ]
                         Html.span [
                             prop.key $"{key}-theme-text"
                             prop.className "inline-flex items-center p-1 rounded"

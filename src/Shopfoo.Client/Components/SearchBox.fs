@@ -60,13 +60,7 @@ type SearchBox =
                     prop.children [ icon iconifyIcon ]
 
                 | SearchButtonProps.Searching ->
-                    prop.children [
-                        Daisy.loading [
-                            loading.spinner
-                            loading.xs
-                            prop.key $"search-input-%s{key}-spinner"
-                        ]
-                    ]
+                    prop.children [ Daisy.loading [ loading.spinner; loading.xs; prop.key $"search-input-%s{key}-spinner" ] ]
 
                 | SearchButtonProps.SearchComplete(SearchCompletionStatus.Error message) ->
                     prop.title message

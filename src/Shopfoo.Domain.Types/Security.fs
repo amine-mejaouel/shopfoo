@@ -74,28 +74,28 @@ type Persona =
                 Feat.Catalog, Access.View
             ]
         | CatalogEditor ->
-            Map [
+            Map [ // ↩
                 Feat.About, Access.View
                 Feat.Catalog, Access.Edit
                 Feat.Sales, Access.View
                 Feat.Warehouse, Access.View
             ]
         | Sales ->
-            Map [
+            Map [ // ↩
                 Feat.About, Access.View
                 Feat.Catalog, Access.View
                 Feat.Sales, Access.Edit
                 Feat.Warehouse, Access.Edit
             ]
         | ProductManager ->
-            Map [
+            Map [ // ↩
                 Feat.About, Access.View
                 Feat.Catalog, Access.Edit
                 Feat.Sales, Access.Edit
                 Feat.Warehouse, Access.Edit
             ]
         | Administrator ->
-            Map [
+            Map [ // ↩
                 Feat.About, Access.View
                 Feat.Catalog, Access.Edit
                 Feat.Sales, Access.Edit
@@ -103,7 +103,7 @@ type Persona =
                 Feat.Admin, Access.Edit
             ]
 
-    static member All = [
+    static member All = [ // ↩
         Guest
         CatalogEditor
         Sales

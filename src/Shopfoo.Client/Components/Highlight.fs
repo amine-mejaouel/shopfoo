@@ -101,12 +101,8 @@ module Highlight =
                         | _, NoMatch -> // ↩
                             Html.text m.Text
 
-                        | classes, TextMatch ->
-                            Html.mark [
-                                prop.key $"%s{reactKey}-match-%i{i}"
-                                prop.classes classes
-                                prop.text m.Text
-                            ]
+                        | classes, TextMatch -> // ↩
+                            Html.mark [ prop.key $"%s{reactKey}-match-%i{i}"; prop.classes classes; prop.text m.Text ]
                 ]
               ]
 

@@ -236,11 +236,7 @@ let AppView () =
         router.onUrlChanged (Page.parseFromUrlSegments >> UrlChanged >> dispatch)
         router.children [
             navbar
-            Html.div [
-                prop.key "app-content"
-                prop.className "px-4 py-2"
-                prop.children pageView
-            ]
+            Html.div [ prop.key "app-content"; prop.className "px-4 py-2"; prop.children pageView ]
 
             match model.Toast with
             | None -> ()

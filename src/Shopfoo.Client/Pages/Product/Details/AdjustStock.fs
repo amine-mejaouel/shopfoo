@@ -101,12 +101,7 @@ let AdjustStockForm key (fullContext: FullContext) stock drawerControl onSave =
                 prop.key $"{key}-current-stock-label"
                 prop.className "bg-base-300 w-full mb-2"
                 prop.children [
-                    Html.input [
-                        prop.key $"%s{key}-current-stock-input"
-                        prop.ariaReadOnly true
-                        prop.readOnly true
-                        prop.value currentStock
-                    ]
+                    Html.input [ prop.key $"%s{key}-current-stock-input"; prop.ariaReadOnly true; prop.readOnly true; prop.value currentStock ]
                 ]
             ]
 

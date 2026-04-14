@@ -37,12 +37,7 @@ module private Crypto =
         use aes = new AesGcm(key, 16)
         aes.Encrypt(nonce, plainBytes, cipherBytes, tag)
 
-        let result =
-            Array.concat [|
-                nonce
-                cipherBytes
-                tag
-            |]
+        let result = Array.concat [| nonce; cipherBytes; tag |]
 
         Convert.ToBase64String(result)
 

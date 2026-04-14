@@ -329,7 +329,7 @@ type AppTranslations
         product: Product,
         ?translations
     ) =
-    let sections = [
+    let sections = [ // ↩
         Section.Home, home :> Base
         Section.Login, login
         Section.Product, product

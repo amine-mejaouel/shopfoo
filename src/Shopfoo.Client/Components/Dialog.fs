@@ -65,16 +65,8 @@ let ModalDialog key (ref: IRefValue<HTMLElement option>) (props: DialogProps) cl
                             ]
                         )
                     ]
-                    Html.h3 [
-                        prop.key $"%s{key}-dialog-title"
-                        prop.className "font-bold text-lg"
-                        prop.text props.Translations.Title
-                    ]
-                    Html.p [
-                        prop.key $"%s{key}-dialog-message"
-                        prop.className "py-4"
-                        prop.text props.Translations.Message
-                    ]
+                    Html.h3 [ prop.key $"%s{key}-dialog-title"; prop.className "font-bold text-lg"; prop.text props.Translations.Title ]
+                    Html.p [ prop.key $"%s{key}-dialog-message"; prop.className "py-4"; prop.text props.Translations.Message ]
                     Daisy.modalAction [
                         prop.key $"%s{key}-dialog-actions"
                         prop.children [

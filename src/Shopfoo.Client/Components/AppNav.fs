@@ -31,11 +31,7 @@ type private Nav(currentPage, translations: AppTranslations) =
                     if page = currentPage then
                         Html.text text
                     else
-                        Html.a [
-                            prop.key $"nav-link-%s{page.Key}"
-                            prop.text text
-                            yield! prop.hrefRouted page
-                        ]
+                        Html.a [ prop.key $"nav-link-%s{page.Key}"; prop.text text; yield! prop.hrefRouted page ]
                 ]
             ]
 

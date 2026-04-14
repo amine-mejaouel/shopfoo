@@ -48,12 +48,8 @@ type Buttons =
                         tooltip.success
                         yield! tooltipProps
                         prop.key $"%s{key}-ok-tooltip"
-                        prop.children [
-                            Html.span [
-                                prop.key $"%s{key}-ok-text"
-                                prop.text "✓"
-                                prop.className "font-bold text-green-500"
-                            ]
+                        prop.children [ // ↩
+                            Html.span [ prop.key $"%s{key}-ok-text"; prop.text "✓"; prop.className "font-bold text-green-500" ]
                         ]
                     ]
             ]

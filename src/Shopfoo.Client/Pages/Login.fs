@@ -58,14 +58,7 @@ type private Users =
                 Html.div [
                     prop.key $"users-%s{key}-th-content"
                     prop.className "flex items-center justify-left"
-                    prop.children [
-                        icon
-                        Html.span [
-                            prop.key $"users-%s{key}-text"
-                            prop.className "ml-2"
-                            prop.text $"%s{text}"
-                        ]
-                    ]
+                    prop.children [ icon; Html.span [ prop.key $"users-%s{key}-text"; prop.className "ml-2"; prop.text $"%s{text}" ] ]
                 ]
             ]
         ]
@@ -79,14 +72,7 @@ type private Users =
                 Html.div [
                     prop.key $"users-%s{key}-td-content"
                     prop.className "flex items-center justify-left"
-                    prop.children [
-                        icon
-                        Html.span [
-                            prop.key $"users-%s{key}-text"
-                            prop.className "ml-2"
-                            prop.text $"%s{text}"
-                        ]
-                    ]
+                    prop.children [ icon; Html.span [ prop.key $"users-%s{key}-text"; prop.className "ml-2"; prop.text $"%s{text}" ] ]
                 ]
             ]
         ]
@@ -102,12 +88,7 @@ let LoginView env =
             match model.Personas with
             | Remote.Empty -> ()
             | Remote.Loading -> Daisy.skeleton [ prop.className "h-32 w-full"; prop.key "login-skeleton" ]
-            | Remote.LoadError apiError ->
-                Daisy.alert [
-                    alert.error
-                    prop.key "load-error"
-                    prop.text apiError.ErrorMessage
-                ]
+            | Remote.LoadError apiError -> Daisy.alert [ alert.error; prop.key "load-error"; prop.text apiError.ErrorMessage ]
 
             | Remote.Loaded personas ->
                 Daisy.fieldset [
@@ -119,11 +100,7 @@ let LoginView env =
                             prop.className "text-sm flex items-center"
                             prop.children [
                                 icon fa6Solid.userLock
-                                Html.span [
-                                    prop.key "login-legend-text"
-                                    prop.className "ml-2"
-                                    prop.text translations.Home.Login
-                                ]
+                                Html.span [ prop.key "login-legend-text"; prop.className "ml-2"; prop.text translations.Home.Login ]
                             ]
                         ]
 

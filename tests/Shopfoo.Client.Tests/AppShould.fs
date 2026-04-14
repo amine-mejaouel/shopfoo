@@ -26,7 +26,7 @@ module private AppTestsHelpers =
 
     module LangStatus =
         let allLoaded: LangStatus =
-            Map [
+            Map [ // ↩
                 Lang.English, Remote.Loaded()
                 Lang.French, Remote.Loaded()
                 Lang.Latin, Remote.Loaded()

@@ -105,18 +105,11 @@ type GuardCriteria with
         GuardProps(this, value, translations, ?invalid = invalid)
 
 type Html with
-    static member inline a(text: string, p: Page) =
-        Html.a [
-            yield! prop.hrefRouted p
-            prop.key $"{p.Key}"
-            prop.text text
-        ]
+    static member inline a(text: string, p: Page) = // ↩
+        Html.a [ yield! prop.hrefRouted p; prop.key $"{p.Key}"; prop.text text ]
 
-    static member inline classed fn (cn: string) (elm: ReactElement list) =
-        fn [ // ↩
-            prop.className cn
-            prop.children elm
-        ]
+    static member inline classed fn (cn: string) (elm: ReactElement list) = // ↩
+        fn [ prop.className cn; prop.children elm ]
 
     static member inline divClassed (cn: string) (elm: ReactElement list) = // ↩
         Html.classed Html.div cn elm

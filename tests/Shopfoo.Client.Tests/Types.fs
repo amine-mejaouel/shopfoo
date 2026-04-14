@@ -115,7 +115,7 @@ type LangSet =
 
 type Translations with
     static member AllPages =
-        Set [
+        Set [ // ↩
             PageCode.Home
             PageCode.Login
             PageCode.Product

@@ -47,12 +47,7 @@ type private Tab
     let reactKeyOf x = String.toKebab $"%A{x}"
     let pageWithFilters changeFilters = Page.ProductIndex(changeFilters filters)
 
-    member _.divider key =
-        Daisy.divider [
-            divider.horizontal
-            prop.key $"%s{key}"
-            prop.className "mx-1"
-        ]
+    member _.divider key = Daisy.divider [ divider.horizontal; prop.key $"%s{key}"; prop.className "mx-1" ]
 
     member _.bazaarCategory(props: BazaarTabProps) =
         Daisy.tab [
@@ -193,11 +188,7 @@ type private Tab
                     prop.key $"%s{key}-label"
                     prop.className "text-sm whitespace-nowrap"
                     prop.children [
-                        Daisy.toggle [
-                            prop.key $"%s{key}-toggle"
-                            prop.isChecked isChecked
-                            prop.onCheckedChange onCheckedChange
-                        ]
+                        Daisy.toggle [ prop.key $"%s{key}-toggle"; prop.isChecked isChecked; prop.onCheckedChange onCheckedChange ]
                         Html.text $"%s{text}"
                     ]
                 ]

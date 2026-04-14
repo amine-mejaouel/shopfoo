@@ -21,11 +21,7 @@ let NotFoundView (env: #Env.IFullContext) url =
         alert.error
         prop.key "product-not-found"
         prop.children [
-            Html.span [
-                prop.key "pnf-icon"
-                prop.text "⛓️‍💥"
-                prop.className "text-lg mr-1"
-            ]
+            Html.span [ prop.key "pnf-icon"; prop.text "⛓️‍💥"; prop.className "text-lg mr-1" ]
             Html.span [
                 prop.key "pnf-content"
                 prop.children [

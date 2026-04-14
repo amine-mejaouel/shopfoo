@@ -121,11 +121,7 @@ let AdminView (env: #Env.IFullContext) =
                 prop.key "admin-disclaimer-fieldset"
                 prop.className "bg-base-200 border border-base-300 rounded-box p-4"
                 prop.children [
-                    Html.legend [
-                        prop.key "admin-disclaimer-legend"
-                        prop.className "text-sm"
-                        prop.text $"⚙️ %s{translations.Home.Admin}"
-                    ]
+                    Html.legend [ prop.key "admin-disclaimer-legend"; prop.className "text-sm"; prop.text $"⚙️ %s{translations.Home.Admin}" ]
                     Html.p [ prop.key "admin-disclaimer-text"; prop.text translations.Home.AdminDisclaimer ]
                 ]
             ]
@@ -135,17 +131,8 @@ let AdminView (env: #Env.IFullContext) =
                 prop.key "admin-cache-fieldset"
                 prop.className "bg-base-200 border border-base-300 rounded-box p-4"
                 prop.children [
-                    Html.legend [
-                        prop.key "admin-cache-legend"
-                        prop.className "text-sm"
-                        prop.text $"🗄️ %s{translations.Home.ProductCache}"
-                    ]
-
-                    Html.p [
-                        prop.key "admin-cache-description"
-                        prop.className "mb-4"
-                        prop.text translations.Home.ResetProductCacheDisclaimer
-                    ]
+                    Html.legend [ prop.key "admin-cache-legend"; prop.className "text-sm"; prop.text $"🗄️ %s{translations.Home.ProductCache}" ]
+                    Html.p [ prop.key "admin-cache-description"; prop.className "mb-4"; prop.text translations.Home.ResetProductCacheDisclaimer ]
 
                     Daisy.button.button [
                         button.error

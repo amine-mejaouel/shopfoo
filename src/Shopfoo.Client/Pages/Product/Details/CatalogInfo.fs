@@ -285,12 +285,7 @@ type private Fieldset(catalogAccess, product: Product, translations: AppTranslat
                     )
                 | Remote.Loaded _ -> SearchButtonProps.SearchComplete SearchCompletionStatus.Success
 
-        let allAuthors =
-            Set.unionMany [
-                book.Authors
-                booksData.Authors
-                searchedAuthors
-            ]
+        let allAuthors = Set.unionMany [ book.Authors; booksData.Authors; searchedAuthors ]
 
         let authorItems = [
             for author in allAuthors do
@@ -562,11 +557,7 @@ let CatalogInfoForm key (fullContext: FullContext) (productModel: ProductModel) 
                 alert.error
                 prop.key "product-not-found"
                 prop.children [
-                    Html.span [
-                        prop.key "pnf-icon"
-                        prop.text "⛓️‍💥"
-                        prop.className "text-lg mr-1"
-                    ]
+                    Html.span [ prop.key "pnf-icon"; prop.text "⛓️‍💥"; prop.className "text-lg mr-1" ]
                     Html.span [
                         prop.key "pnf-content"
                         prop.children [
@@ -617,11 +608,7 @@ let CatalogInfoForm key (fullContext: FullContext) (productModel: ProductModel) 
                 prop.key $"%s{key}-fieldset"
                 prop.className "bg-base-200 border border-base-300 rounded-box p-4"
                 prop.children [
-                    Html.legend [
-                        prop.key "product-details-legend"
-                        prop.className "text-sm"
-                        prop.text $"🗂️ %s{translations.Product.CatalogInfo}"
-                    ]
+                    Html.legend [ prop.key "product-details-legend"; prop.className "text-sm"; prop.text $"🗂️ %s{translations.Product.CatalogInfo}" ]
 
                     Html.div [
                         prop.key "image-grid"

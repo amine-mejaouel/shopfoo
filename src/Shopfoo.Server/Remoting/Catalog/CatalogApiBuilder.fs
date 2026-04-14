@@ -7,13 +7,7 @@ open Shopfoo.Shared.Remoting
 
 [<Sealed>]
 type CatalogApiBuilder(api: FeatApi) =
-    static let pages =
-        Set [
-            PageCode.Home
-            PageCode.Login
-            PageCode.Product
-        ]
-
+    static let pages = Set [ PageCode.Home; PageCode.Login; PageCode.Product ]
     static let claim = Claims.single Feat.Catalog
 
     member _.Build() : CatalogApi = {

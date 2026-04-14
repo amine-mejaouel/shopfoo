@@ -22,7 +22,7 @@ let AboutView (env: #Env.IFullContext) =
         prop.key "about-page"
         prop.className "text-sm"
         prop.children [
-            Daisy.alert [
+            Daisy.alert [ // ↩
                 prop.key "about-disclaimer"
                 prop.className "my-3"
                 prop.text $"ℹ️ %s{translations.Home.AboutDisclaimer}"
@@ -37,7 +37,7 @@ let AboutView (env: #Env.IFullContext) =
                         prop.key "about-version"
                         prop.text $"🏷️ Version %s{Package.version} (%s{Package.releaseDate})"
                     ]
-                    Daisy.badge [
+                    Daisy.badge [ // ↩
                         badge.soft
                         badge.primary
                         prop.key "about-author"

@@ -40,11 +40,7 @@ let UserDropdown key userName (translations: AppTranslations) onClick =
                     prop.onClick (fun _ -> onClick ())
                     prop.children [
                         icon fa6Solid.arrowRightFromBracket
-                        Html.span [
-                            prop.key "user-logout-text"
-                            prop.className "ml-2"
-                            prop.text $"%s{translations.Home.Logout}"
-                        ]
+                        Html.span [ prop.key "user-logout-text"; prop.className "ml-2"; prop.text $"%s{translations.Home.Logout}" ]
                     ]
                 ]
             ]

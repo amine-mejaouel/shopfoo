@@ -255,11 +255,7 @@ let ActionsForm key fullContext sku (drawerControl: DrawerControl) onSavePrice s
             prop.key $"%s{key}-fieldset"
             prop.className "bg-base-200 border border-base-300 rounded-box p-4"
             prop.children [
-                Html.legend [
-                    prop.key "product-actions-legend"
-                    prop.className "text-sm"
-                    prop.text $"⚡ %s{translations.Product.Actions}"
-                ]
+                Html.legend [ prop.key "product-actions-legend"; prop.className "text-sm"; prop.text $"⚡ %s{translations.Product.Actions}" ]
 
                 // -- Prices ----
                 match model.Prices, translations with

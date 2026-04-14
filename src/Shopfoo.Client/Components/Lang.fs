@@ -26,7 +26,7 @@ module LangMenu =
         Status = Remote.Loaded()
     }
 
-    let all = [
+    let all = [ // ↩
         mk Lang.English "en" "English" "ᴇɴ"
         mk Lang.French "fr" "Français" "ꜰʀ"
         mk Lang.Latin "la" "Latin ⚠️" "ʟᴀ"
@@ -85,12 +85,7 @@ type private LangMenuElement(currentLang, onClick) =
         match langMenu.Status with
         | Remote.Empty -> Html.none
         | Remote.Loading ->
-            Daisy.loading [
-                prop.key $"{key}-spinner"
-                loading.spinner
-                loading.xs
-                color.textInfo
-            ]
+            Daisy.loading [ prop.key $"{key}-spinner"; loading.spinner; loading.xs; color.textInfo ]
             |> this.li (key, langMenu, canClick = false)
 
         | Remote.Loaded() ->

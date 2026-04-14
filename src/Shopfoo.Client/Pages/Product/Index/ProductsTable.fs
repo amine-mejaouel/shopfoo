@@ -163,11 +163,7 @@ type private Td(filters: Filters, row: Row) =
                         | []
                         | [ { Text = String.NullOrWhiteSpace } ] -> ()
                         | results ->
-                            Html.span [
-                                prop.key $"%s{row.Key}-sep"
-                                prop.className "hidden group-hover:inline"
-                                prop.text ":"
-                            ]
+                            Html.span [ prop.key $"%s{row.Key}-sep"; prop.className "hidden group-hover:inline"; prop.text ":" ]
 
                             for i, result in List.indexed results do
                                 result
@@ -248,11 +244,7 @@ let ProductsTable key (filters: Filters) products provider (translations: AppTra
 
                         prop.children [
                             Html.text $"%s{text}"
-                            Html.span [
-                                prop.key $"product-th-%s{key}-sort-icon"
-                                prop.className textColor
-                                prop.children sortIcon
-                            ]
+                            Html.span [ prop.key $"product-th-%s{key}-sort-icon"; prop.className textColor; prop.children sortIcon ]
                         ]
                 ]
             ]

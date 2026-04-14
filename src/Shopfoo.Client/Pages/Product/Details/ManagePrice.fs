@@ -112,16 +112,8 @@ let ManagePriceForm key (fullContext: FullContext) price prices drawerControl on
                 prop.className "text-base font-bold mb-2 flex items-center"
                 prop.children [
                     icon
-                    Html.span [
-                        prop.key $"%s{key}-legend-title"
-                        prop.className "ml-1"
-                        prop.text title
-                    ]
-                    Html.span [
-                        prop.key $"%s{key}-legend-separator"
-                        prop.className "mx-1"
-                        prop.text "•"
-                    ]
+                    Html.span [ prop.key $"%s{key}-legend-title"; prop.className "ml-1"; prop.text title ]
+                    Html.span [ prop.key $"%s{key}-legend-separator"; prop.className "mx-1"; prop.text "•" ]
 
                     match price.Type with
                     | ListPrice -> Html.text translations.Product.ListPrice

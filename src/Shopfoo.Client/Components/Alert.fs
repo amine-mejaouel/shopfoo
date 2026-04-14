@@ -9,11 +9,7 @@ open Shopfoo.Domain.Types.Security
 open Shopfoo.Shared.Errors
 
 let private textCode key text = // ↩
-    Html.code [
-        prop.key $"%s{key}-code"
-        prop.className "text-sm"
-        prop.text $"%s{text}"
-    ]
+    Html.code [ prop.key $"%s{key}-code"; prop.className "text-sm"; prop.text $"%s{text}" ]
 
 let private errorDetail apiError key user =
     match apiError.ErrorDetail, user with
@@ -60,11 +56,7 @@ let apiError key (apiError: ApiError) user =
             Html.div [
                 prop.key $"%s{key}-alert-content"
                 prop.children [
-                    Html.div [
-                        prop.key $"%s{key}-message"
-                        prop.className "pb-2"
-                        prop.text apiError.ErrorMessage
-                    ]
+                    Html.div [ prop.key $"%s{key}-message"; prop.className "pb-2"; prop.text apiError.ErrorMessage ]
                     errorDetail apiError key user
                 ]
             ]
