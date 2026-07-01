@@ -1,5 +1,6 @@
 ﻿namespace Shopfoo.Program
 
+open System.Diagnostics
 open Shopfoo.Common
 open Shopfoo.Domain.Types.Errors
 
@@ -31,6 +32,7 @@ type Instructions<'ins when 'ins :> IProgramInstructions> = 'ins
 type Program<'ins, 'ret when Instructions<'ins>> = 'ins -> Async<'ret>
 
 [<RequireQualifiedAccess>]
+[<DebuggerNonUserCode>]
 module Program =
     let retn (a: 'a) : Program<'ins, 'a> = // ↩
         fun _ -> async { return a }
