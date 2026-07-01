@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <NoWarn>NU1510</NoWarn>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+</Project>
